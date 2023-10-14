@@ -1,8 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import styled from 'styled-components';
 import { Container, Wrapper } from "./style";
 
-const Q3 = () => {
+const Dropdown = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+  
+    const handleSelectChange = (event) => {
+      setSelectedOption(event.target.value);
+    };
     return (
         <StyledWrapper>
             <StyledContainer >
@@ -14,8 +20,29 @@ const Q3 = () => {
                 </Title>
                 <QuestionsGrid>
                     <AnswerDiv>
-                        <a href="https://www.figma.com/file/kPxYk2EWTMsBmx4lAc92ni/Web-Dev-Assignment?type=design&node-id=16-26&mode=design&t=LMCvfVQBL3S5dApY-0" target="_blank" ><FigmaButton>Figma</FigmaButton></a>
-                        <a href="https://www.figma.com/proto/kPxYk2EWTMsBmx4lAc92ni/Web-Dev-Assignment?type=design&node-id=36-670&t=56Qr3ehXorgFodbH-1&scaling=min-zoom&page-id=36%3A647&starting-point-node-id=36%3A670" target="_blank" ><PrototypeButton>Prototype</PrototypeButton></a>
+                    <div className="dropdownContainer" style={{ marginBottom: '20px' }}>
+                    <style>{styles}</style> 
+      <select
+        id="dropdown"
+        value={selectedOption}
+        onChange={handleSelectChange}
+        className="dropdown"
+        style={{
+            padding: '8px',
+            border: '1px solid black',
+            borderRadius:'4px',
+            transition: 'border-color 0.3s ease',
+            fontFamily:'Lexend Regular',
+            fontSize:'normal',
+          }}
+      >
+        <option value="">Choose an option</option>
+        <option value="Mountain">Mountain</option>
+        <option value="Forest">Forest</option>
+        <option value="Ocean">Ocean</option>
+        <option value="Desert">Desert</option>
+      </select>
+    </div>
                     </AnswerDiv>
                 </QuestionsGrid>
             </StyledContainer>
@@ -23,7 +50,7 @@ const Q3 = () => {
     )
 }
 
-export default Q3
+export default Dropdown
 
 const StyledWrapper=styled(Wrapper)`
 `
@@ -101,3 +128,26 @@ font-weight: 700;
 line-height: 160%;
 cursor:pointer;
 `
+const styles = `
+    .dropdownContainer {
+      margin-bottom: 20px;
+    }
+    .dropdownContainer :hover{
+        border-color:blue;
+    }
+
+    .dropdown {
+      padding: 8px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
+
+    .dropdown:hover {
+      border-color: blue;
+    }
+
+    .dropdown option:hover {
+      background-color: blue;
+      color: white;
+    }
+  `

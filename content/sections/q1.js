@@ -89,7 +89,9 @@ flex-direction:column;
 gap:20px;
 `
 const FlexRow = styled.div`
-display:flex;
+//***************
+display:grid;
+//******************
 flex-direction:row;
 gap:20px;
 `
